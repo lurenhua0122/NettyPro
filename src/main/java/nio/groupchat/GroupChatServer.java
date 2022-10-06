@@ -50,7 +50,7 @@ public class GroupChatServer {
                         iterator.remove();
                     }
                 } else {
-                    System.out.println("服务端等待中.....");
+//                    System.out.println("服务端等待中.....");
                 }
             }
         } catch (Exception e) {
@@ -87,7 +87,7 @@ public class GroupChatServer {
         System.out.println("服务器转发消息");
         //遍历所有 注册到selector上的所有 socketchannel 并排除self
         for (SelectionKey key :
-                selector.keys()) {
+                selector.selectedKeys()) {
             Channel target = key.channel();
             if (target instanceof SocketChannel && target != self){
                 SocketChannel socketChannel = (SocketChannel) target;

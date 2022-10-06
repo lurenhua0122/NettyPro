@@ -56,10 +56,12 @@ public class GroupChatClient {
                             System.out.println("接收到服务端信息：" + s);
                         }
                     }
+                    iterator.remove();
                 }
-                System.out.println();
+
+//                System.out.println();
             } else {
-                System.out.println("没有可用的通道！");
+//                System.out.println("没有可用的通道！");
             }
         } catch (Exception e) {
             e.printStackTrace();
