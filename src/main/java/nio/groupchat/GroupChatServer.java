@@ -87,7 +87,7 @@ public class GroupChatServer {
         System.out.println("服务器转发消息");
         //遍历所有 注册到selector上的所有 socketchannel 并排除self
         for (SelectionKey key :
-                selector.selectedKeys()) {
+                selector.keys()) {
             Channel target = key.channel();
             if (target instanceof SocketChannel && target != self){
                 SocketChannel socketChannel = (SocketChannel) target;
