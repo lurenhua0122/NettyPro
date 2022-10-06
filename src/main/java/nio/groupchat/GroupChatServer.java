@@ -50,7 +50,7 @@ public class GroupChatServer {
                         iterator.remove();
                     }
                 } else {
-                    System.out.println("服务端等待中.....");
+//                    System.out.println("服务端等待中.....");
                 }
             }
         } catch (Exception e) {

@@ -51,15 +51,17 @@ public class GroupChatClient {
                         SocketChannel channel = (SocketChannel) key.channel();
                         ByteBuffer bu = ByteBuffer.allocate(1024);
                         int read = channel.read(bu);
-                        if (read > 0) {
+
                             String s = new String(bu.array());
                             System.out.println("接收到服务端信息：" + s);
-                        }
+
                     }
+                    iterator.remove();
                 }
-                System.out.println();
+
+//                System.out.println();
             } else {
-                System.out.println("没有可用的通道！");
+//                System.out.println("没有可用的通道！");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,7 +77,7 @@ public class GroupChatClient {
                 while (true) {
                     groupChatClient.readInfo();
                     try {
-                        TimeUnit.SECONDS.sleep(3000);
+                        Thread.currentThread().sleep(3000);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
