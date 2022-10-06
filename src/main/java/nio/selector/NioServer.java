@@ -17,6 +17,7 @@ public class NioServer {
         serverSocketChannel.configureBlocking(false);
 //        把通道注册到selector 关心的 事件 OP_ACCEPT
         serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
+        System.out.println("注册后的selection Keys size:"+selector.keys().size());
 //        循环等待客户端连接
         while(true){
             //等待1秒，如果没有事件，返回继续
@@ -51,6 +52,7 @@ public class NioServer {
                     //关联一个Buffer
                     socketChannel.register(selector,SelectionKey.OP_READ, ByteBuffer.allocate(1024));
 
+                    System.out.println("客户端连接后，注册到selection Keys size:"+selector.keys().size());
                 }else if (key.isReadable()){  //发生读取事件
                     //通过Key反向取得Channel
                     SocketChannel channel = (SocketChannel)key.channel();
