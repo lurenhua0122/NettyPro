@@ -27,6 +27,7 @@ public class GroupChatServer {
     }
 
     public void listen() {
+        System.out.println("线程："+Thread.currentThread().getName());
         try {
             while (true) {
                 int count = selector.select(2000);
@@ -84,6 +85,7 @@ public class GroupChatServer {
         }
     }
     private void sendInfoToOtherClients(String msg , SocketChannel self) throws IOException {
+        System.out.println("服务器转发消息线程："+Thread.currentThread().getName());
         System.out.println("服务器转发消息");
         //遍历所有 注册到selector上的所有 socketchannel 并排除self
         for (SelectionKey key :
